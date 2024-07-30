@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Job Application Manager",
+    "version": "1.0",
+    "description": "Manage your job application status easily.",
+    "permissions": [
+      "storage",
+      "tabs"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/icon16.jpg",
+        "48": "icons/icon48.jpg",
+        "128": "icons/icon128.jpg"
+      }
+    }
+  }
+  
