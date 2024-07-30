@@ -1,0 +1,158 @@
+body {
+  font-family: Arial, sans-serif;
+  width: 600px;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+#addJobForm {
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#addJobForm input, #addJobForm select, #addJobForm button {
+  margin: 5px 0;
+  padding: 10px;
+  width: calc(100% - 22px);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#addJobForm button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+#categories {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.category {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  width: 30%;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow-y: auto;
+  height: max-content;
+}
+
+.category[data-category="apply-later"] { border-top: 5px solid #007bff; }
+.category[data-category="applied"] { border-top: 5px solid #28a745; }
+.category[data-category="interview"] { border-top: 5px solid #ffc107; }
+.category[data-category="offered"] { border-top: 5px solid #17a2b8; }
+.category[data-category="rejection"] { border-top: 5px solid #dc3545; }
+
+.category h3 {
+  margin-top: 0;
+  /* color: #007bff; */
+}
+
+.job-item {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  padding-right: 10px; /* Added padding to the right */
+}
+
+.job-item strong {
+  flex-wrap: wrap;
+  word-break: break-word;
+  margin-top: 15px;
+}
+
+.job-item a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delete-btn, .edit-btn {
+  position: absolute;
+  top: 2.5px;
+  border: none;
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.delete-btn {
+  right: 0px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  left: 0px; /* Adjusted position */
+  color: blue;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.modal-content button#cancelEditButton {
+  background-color: #dc3545;
+}
+

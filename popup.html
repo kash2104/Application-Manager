@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+  <h1>Job Application Tracker</h1>
+  <div id="addJobForm">
+    <input type="text" id="jobTitle" placeholder="Job Title">
+    <input type="url" id="jobLink" placeholder="Job Link">
+    <select id="jobCategory">
+      <option value="apply-later">Apply Later</option>
+      <option value="applied">Applied</option>
+      <option value="interview">Interview</option>
+      <option value="offered">Offered</option>
+      <option value="rejection">Rejection</option>
+    </select>
+    <button id="addJobButton">Add Job</button>
+  </div>
+  <div id="categories">
+    <div class="category" data-category="apply-later">
+      <h3>Apply Later</h3>
+      <div class="job-list" id="apply-later"></div>
+    </div>
+    <div class="category" data-category="applied">
+      <h3>Applied</h3>
+      <div class="job-list" id="applied"></div>
+    </div>
+    <div class="category" data-category="interview">
+      <h3>Interview</h3>
+      <div class="job-list" id="interview"></div>
+    </div>
+    <div class="category" data-category="offered">
+      <h3>Offered</h3>
+      <div class="job-list" id="offered"></div>
+    </div>
+    <div class="category" data-category="rejection">
+      <h3>Rejection</h3>
+      <div class="job-list" id="rejection"></div>
+    </div>
+  </div>
+  <script src="content.js"></script>
+</body>
+</html>
