@@ -77,34 +77,43 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       jobs[category].push({ title, link, date });
       chrome.storage.local.set({ jobs });
+  
+      if (category === 'interview' && date) {
+        chrome.runtime.sendMessage({ action: 'scheduleInterview', date, title });
+      }
     });
   }
+  
 
   function updateJobCategory(jobItem, newCategory, date) {
     const title = jobItem.querySelector('strong').textContent;
     const link = jobItem.querySelector('a').href;
     const oldCategory = jobItem.dataset.category;
-
+  
     chrome.storage.local.get('jobs', data => {
       const jobs = data.jobs || {};
-
+  
       if (jobs[oldCategory]) {
         jobs[oldCategory] = jobs[oldCategory].filter(job => job.title !== title);
       }
-
+  
       if (!jobs[newCategory]) {
         jobs[newCategory] = [];
       }
       jobs[newCategory].push({ title, link, date });
-
+  
       jobItem.dataset.category = newCategory;
       jobItem.querySelector('p') ? jobItem.querySelector('p').remove() : null;
-      newCategory === 'interview' ? jobItem.innerHTML += `<p>Date: ${date}</p>` : null;
+      if (newCategory === 'interview') {
+        jobItem.innerHTML += `<p>Date: ${date}</p>`;
+        // Schedule notifications for the interview
+        chrome.runtime.sendMessage({ action: 'scheduleInterview', date, title });
+      }
       document.getElementById(newCategory).appendChild(jobItem);
       chrome.storage.local.set({ jobs });
     });
   }
-
+  
   function deleteJob(jobItem) {
     const category = jobItem.dataset.category;
     const link = jobItem.querySelector('a').href.trim();
@@ -147,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <option value="rejection" ${jobItem.dataset.category === 'rejection' ? 'selected' : ''}>Rejection</option>
         </select>
         ${jobItem.dataset.category === 'interview' ? `<input type="date" id="editDateInput" value="${jobItem.querySelector('p').textContent.split('Date: ')[1]}">` : ''}
+        <div id="modalContentGap"></div>
         <button id="saveEditButton">Save</button>
         <button id="cancelEditButton">Cancel</button>
       </div>
