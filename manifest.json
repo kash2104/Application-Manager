@@ -5,7 +5,9 @@
     "description": "Manage your job application status easily.",
     "permissions": [
       "storage",
-      "tabs"
+      "tabs",
+      "notifications",
+      "alarms"
     ],
     "background": {
       "service_worker": "background.js"
