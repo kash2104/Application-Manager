@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Job Application Manager",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Manage your job application status easily.",
     "permissions": [
       "storage",
